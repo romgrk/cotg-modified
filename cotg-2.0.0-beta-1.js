@@ -166,9 +166,11 @@
         set: function(date) {
           if (date !== undefined) {
             widget.isoDateInput.val(widget.generateISODateString(date));
+            widget.isoDateInput.trigger('change');
 
             navigator.globalization.dateToString(date, function(date) {
               widget.formattedDateInput.val(date.value);
+              widget.formattedDateInput.trigger('change');
             }, null, {
               formatLength : 'short',
               selector : 'date'
@@ -272,9 +274,11 @@
         set: function(time) {
           if (time !== undefined) {
             widget.formattedTimeInput.val(time.toLocaleTimeString());
+            widget.formattedTimeInput.trigger('change');
 
             navigator.globalization.dateToString(time, function(time) {
               widget.isoTimeInput.val(time.value);
+              widget.isoTimeInput.trigger('change');
             }, null, {
               formatLength : 'short',
               selector : 'time'
